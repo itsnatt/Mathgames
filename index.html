@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Game Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="Peler/title.png" alt="Title" class="logo">
+
+        <!-- Landing Page -->
+        <div id="landing-page" class="page">
+            <h1>Selamat Datang di Web Game Edukasi</h1>
+            <button class="main-button" onclick="showPage('materi-page')">Pilihan Materi</button>
+            <button class="main-button" onclick="showPage('soal-page')">Menu Soal</button>
+        </div>
+
+        <!-- Halaman Materi -->
+        <div id="materi-page" class="page" style="display: none;">
+            <h2>Pilih Materi</h2>
+            <button class="menu-button" onclick="showPage('materi-pertambahan')">+</button>
+            <button class="menu-button" onclick="showPage('materi-pengurangan')">-</button>
+            <button class="menu-button" onclick="showPage('materi-perkalian')">x</button>
+            <button class="menu-button" onclick="showPage('materi-pembagian')">/</button>
+            <button class="main-button" onclick="showPage('landing-page')">Kembali</button>
+        </div>
+
+        <!-- Halaman Materi Detail -->
+        <div id="materi-pertambahan" class="page frame" style="display: none;">
+            <h2>Materi Pertambahan</h2>
+            <p>Materi pertambahan: (deskripsi singkat)</p>
+            <button class="main-button" onclick="showPage('materi-page')">Kembali ke Pilihan Materi</button>
+            <button class="main-button" onclick="showPage('materi-video-pertambahan')">Materi Video</button>
+        </div>
+
+        <div id="materi-video-pertambahan" class="page frame" style="display: none;">
+            <h2>Materi Video Pertambahan</h2>
+            <video controls>
+                <source src="Peler/vid/Valorant 1v5 Sheriff God Ace.mp4" type="video/mp4">
+            </video>
+            <button class="main-button" onclick="showPage('materi-pertambahan')">Kembali ke Materi Text</button>
+        </div>
+
+        <!-- Halaman Soal -->
+        <div id="soal-page" class="page" style="display: none;">
+            <h2>Pilih Soal</h2>
+            <button class="menu-button" onclick="showPage('soal-pertambahan')">+</button>
+            <button class="menu-button" onclick="showPage('soal-pengurangan')">-</button>
+            <button class="menu-button" onclick="showPage('soal-perkalian')">x</button>
+            <button class="menu-button" onclick="showPage('soal-pembagian')">/</button>
+            <button class="main-button" onclick="showPage('landing-page')">Kembali</button>
+        </div>
+
+
+        <!-- Halaman Soal Pertambahan -->
+        <div id="soal-pertambahan" class="page" style="display: none;">
+            <h2>Pilih Tingkat Kesulitan</h2>
+            <button class="main-button" onclick="startQuiz('pertambahan', 'mudah')">Mudah</button>
+            <button class="main-button" onclick="startQuiz('pertambahan', 'sedang')">Sedang</button>
+            <button class="main-button" onclick="startQuiz('pertambahan', 'sulit')">Sulit</button>
+            <button class="main-button" onclick="showPage('soal-page')">Kembali</button>
+        </div>
+
+
+        <!-- Halaman Soal Aktif -->
+        <div id="quiz-page" class="page frame" style="display: none;">
+            <h2 id="quiz-title">Soal</h2>
+            <p id="question-text">Soal akan tampil di sini.</p>
+            <div id="answer-buttons"></div>
+            <button id="repeat-toggle-button" onclick="toggleRepeatOnIncorrect()">Repeat On Incorrect: Off</button>
+            <button id="retry-button" class="main-button" style="display: none;" onclick="retryQuiz()">Ulangi</button>
+            <button class="main-button" onclick="showPage('soal-pertambahan')">Kembali</button>
+        </div>
+
+        <!-- Halaman Skor Akhir -->
+        <div id="score-page" class="page frame" style="display: none;">
+            <h2>Skor Anda</h2>
+            <p id="score-text">Skor Anda akan tampil di sini.</p>
+            <button class="main-button" onclick="showPage('landing-page')">Kembali ke Halaman Utama</button>
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p>Jawaban Anda salah. Apakah Anda ingin mencoba lagi?</p>
+                <button id="retryBtn">Coba lagi</button>
+                <button id="nextBtn">Lanjutkan</button>
+            </div>
+        </div>
+
+        <audio id="wrongAnswerSound">
+            <source src="Peler/sfx/spongebob-fail.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="nextQuestionSound">
+            <source src="Peler/sfx/f1-team-radio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
